@@ -3,31 +3,69 @@
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import { useState } from "react";
+import {
+  SiJavascript,
+  SiReact,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiTailwindcss,
+  SiHtml5,
+  SiCss3,
+  SiTypescript,
+  SiVercel,
+  SiSupabase,
+} from "react-icons/si";
 
-const projects = [
+import { IconType } from "react-icons";
+
+type Technology =
+  | "NextJS"
+  | "TailwindCSS"
+  | "TypeScript"
+  | "Vercel"
+  | "Supabase";
+
+const projectTechnologies: Record<Technology, IconType> = {
+  NextJS: SiNextdotjs,
+  TailwindCSS: SiTailwindcss,
+  TypeScript: SiTypescript,
+  Vercel: SiVercel,
+  Supabase: SiSupabase,
+};
+
+interface Project {
+  name: string;
+  description: string;
+  url: string;
+  technologies: Technology[];
+}
+
+const projects: Project[] = [
   {
     name: "Validate My Idea",
     description:
       "Leverage the power of Google to validate your business ideas before investing your time and money. Quickly calculate if your idea can scale and generate significant profits. Perfect for solo entrepreneurs looking to make informed decisions and avoid unworthy ventures.",
     url: "https://validate-my-idea.vercel.app/",
+    technologies: ["NextJS", "TailwindCSS", "TypeScript", "Vercel"],
   },
   {
     name: "Why So Moody",
     description:
       "Easily log and journal your moods with our comprehensive CRUD app featuring user authentication. Track your emotional well-being over time and gain insights through planned future updates like mood charts and AI analysis. Perfect for young adults (18-35) looking for a simple and effective way to monitor their mental health.",
     url: "https://why-so-moody.vercel.app/",
+    technologies: ["NextJS", "TailwindCSS", "TypeScript", "Supabase", "Vercel"],
   },
 ];
 
 const skills = [
-  "JavaScript",
-  "React",
-  "Next.js",
-  "Node.js",
-  "Tailwind CSS",
-  "HTML",
-  "CSS",
-  "SQL",
+  { name: "JavaScript", icon: SiJavascript },
+  { name: "React", icon: SiReact },
+  { name: "Next.js", icon: SiNextdotjs },
+  { name: "Node.js", icon: SiNodedotjs },
+  { name: "Tailwind CSS", icon: SiTailwindcss },
+  { name: "HTML", icon: SiHtml5 },
+  { name: "CSS", icon: SiCss3 },
+  { name: "TypeScript", icon: SiTypescript },
 ];
 
 const introduction = `
@@ -95,17 +133,18 @@ export default function Home() {
                     My Skills
                   </h1>
                   <p className="mt-4 text-lg leading-8 text-sky-600">
-                    Just a few of my favorite languages:
+                    Just a few of my favorite techs:
                   </p>
                 </div>
                 <dl className="mt-8 p-5 grid grid-cols-1 gap-6 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-4">
                   {skills.map((skill) => (
                     <div
-                      key={skill}
-                      className="flex flex-col items-center justify-center bg-sky-800 p-8 rounded-lg shadow-sm transition-transform transform hover:scale-105"
+                      key={skill.name}
+                      className="flex items-center justify-center bg-sky-800 p-8 rounded-lg shadow-sm transition-transform transform hover:scale-105"
                     >
+                      <skill.icon className="h-8 w-8 text-white mr-4" />
                       <dt className="text-lg font-medium text-white">
-                        {skill}
+                        {skill.name}
                       </dt>
                     </div>
                   ))}
@@ -120,7 +159,7 @@ export default function Home() {
           className="text-center px-4 mt-20 mb-10 w-full bg-sky-900"
         >
           <div className="py-24 sm:py-32">
-            <h1 className="text-5xl font-bold text-white mb-10">My Projects</h1>
+            <h1 className="text-6xl font-bold text-white mb-10">Projects</h1>
             <p className="mt-4 text-lg leading-8 text-white">
               Here are a few projects that I'm currently working on:
             </p>
@@ -136,13 +175,21 @@ export default function Home() {
                       <h3 className="text-2xl font-semibold text-gray-900 mb-4 group-hover:text-sky-600">
                         {project.name}
                       </h3>
-                      <p className="text-gray-700 group-hover:text-gray-900">
+                      <p className="text-gray-700 group-hover:text-gray-900 mb-5">
                         {project.description}
                       </p>
                     </div>
+                    <div className="flex justify-center  space-x-6 mb-5">
+                      {project.technologies.map((tech) => {
+                        const Icon = projectTechnologies[tech];
+                        return (
+                          <Icon key={tech} className="h-8 w-8 text-sky-600" />
+                        );
+                      })}
+                    </div>
                     <div className="mt-4">
                       <span className="text-sm font-medium text-sky-600 group-hover:text-sky-800">
-                        Learn More &rarr;
+                        Check It Out! &rarr;
                       </span>
                     </div>
                   </div>
