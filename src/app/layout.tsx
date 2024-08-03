@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
@@ -11,17 +12,16 @@ export const metadata: Metadata = {
   description: "Davey's List Of Creations",
 };
 
-const PreviewProvider = lazy(() => import("@/components/PreviewProvider.tsx"));
+const PreviewProvider = lazy(() => import("@/components/PreviewProvider"));
+const VisualEditing = lazy(() => import("@sanity/visual-editing"));
 
-export default function RootLayout({
-  children,
-  draftMode,
-  token,
-}: Readonly<{
-  children: React.ReactNode;
+interface RootLayoutProps {
+  children: ReactNode;
   draftMode?: boolean;
   token?: string;
-}>) {
+}
+
+const RootLayout = ({ children, draftMode, token }: RootLayoutProps) => {
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -41,5 +41,7 @@ export default function RootLayout({
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;
 
