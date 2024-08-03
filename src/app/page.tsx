@@ -1,7 +1,7 @@
 "use client";
 
-import Navbar from "./components/navbar";
-import Footer from "./components/footer";
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 import { useState } from "react";
 import {
   SiJavascript,
@@ -42,13 +42,6 @@ interface Project {
 
 const projects: Project[] = [
   {
-    name: "Validate My Idea",
-    description:
-      "Leverage the power of Google to validate your business ideas before investing your time and money. Quickly calculate if your idea can scale and generate significant profits. Perfect for solo entrepreneurs looking to make informed decisions and avoid unworthy ventures.",
-    url: "https://validate-my-idea.vercel.app/",
-    technologies: ["NextJS", "TailwindCSS", "TypeScript", "Vercel"],
-  },
-  {
     name: "Why So Moody",
     description:
       "Easily log and journal your moods with our comprehensive CRUD app featuring user authentication. Track your emotional well-being over time and gain insights through planned future updates like mood charts and AI analysis. Perfect for young adults (18-35) looking for a simple and effective way to monitor their mental health.",
@@ -56,7 +49,6 @@ const projects: Project[] = [
     technologies: ["NextJS", "TailwindCSS", "TypeScript", "Supabase", "Vercel"],
   },
 ];
-
 const skills = [
   { name: "JavaScript", icon: SiJavascript },
   { name: "React", icon: SiReact },

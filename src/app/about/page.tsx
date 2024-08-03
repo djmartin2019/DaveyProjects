@@ -1,5 +1,5 @@
-import Navbar from "../components/navbar";
-import Footer from "../components/footer";
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 
 const introduction = `
   Hey there! I'm Davey, a passionate tech entrepreneur driven by a love for creation and a desire to provide value to others through innovative apps. From a young age, I've always enjoyed building things, and this passion has naturally led me to explore web development and entrepreneurship.
