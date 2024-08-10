@@ -2,7 +2,7 @@ import { validatePreviewUrl } from '@sanity/preview-url-secret'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { createClient } from 'next-sanity'
 
-import { apiVersion, dataset, projectId } from '../../sanity/env.ts';
+import { apiVersion, dataset, projectId } from '@/sanity/env';
 
 const token = process.env.NEXT_PUBLIC_SANITY_API_READ_TOKEN
 if (!token) {
