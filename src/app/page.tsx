@@ -18,12 +18,7 @@ import {
 
 import { IconType } from "react-icons";
 
-type Technology =
-  | "NextJS"
-  | "TailwindCSS"
-  | "TypeScript"
-  | "Vercel"
-  | "Supabase";
+type Technology = "NextJS" | "TailwindCSS" | "TypeScript" | "Vercel" | "Supabase";
 
 const projectTechnologies: Record<Technology, IconType> = {
   NextJS: SiNextdotjs,
@@ -42,13 +37,21 @@ interface Project {
 
 const projects: Project[] = [
   {
-    name: "Why So Moody",
+    name: "Biblical Map App",
     description:
-      "Easily log and journal your moods with our comprehensive CRUD app featuring user authentication. Track your emotional well-being over time and gain insights through planned future updates like mood charts and AI analysis. Perfect for young adults (18-35) looking for a simple and effective way to monitor their mental health.",
-    url: "https://why-so-moody.vercel.app/",
-    technologies: ["NextJS", "TailwindCSS", "TypeScript", "Supabase", "Vercel"],
+      "A historical and interactive map application designed to help users explore biblical locations with contextual scripture references and historical insights. Built with modern web technologies for a seamless experience.",
+    url: "https://biblical-map.vercel.app/", // Update with your real project link
+    technologies: ["NextJS", "TailwindCSS", "TypeScript", "Vercel"],
+  },
+  {
+    name: "S&P 500 Data Analytics",
+    description:
+      "A comprehensive stock market analysis tool leveraging PostgreSQL and Python to track sector performance, stock trends, and volatility metrics. Integrated with Next.js for interactive data visualization.",
+    url: "#", // Update with your real project link
+    technologies: ["NextJS", "TailwindCSS", "TypeScript", "Vercel"],
   },
 ];
+
 const skills = [
   { name: "JavaScript", icon: SiJavascript },
   { name: "React", icon: SiReact },
@@ -61,7 +64,7 @@ const skills = [
 ];
 
 const introduction = `
-  Hey there! I'm David, a passionate tech entrepreneur driven by a love for creation and a desire to provide value to others through innovative apps. From a young age, I've always enjoyed building things, and this passion has naturally led me to explore web development and entrepreneurship.
+  Hi, I'm David—an entrepreneur and software developer passionate about building modern web applications. I specialize in Next.js, TypeScript, and cloud-based solutions, focusing on seamless user experiences and scalable architectures. Whether it's data-driven applications or interactive platforms, I'm driven by innovation and problem-solving.
 `;
 
 export default function Home() {
@@ -72,37 +75,14 @@ export default function Home() {
       <Navbar />
 
       <main className="flex flex-col items-center justify-center flex-grow">
+        {/* Hero Section */}
         <section
           id="hero"
           className="relative w-full text-center px-4 py-8 sm:py-10 lg:py-12 bg-gradient-to-r from-sky-400 to-blue-500 text-white min-h-screen flex flex-col items-center justify-center"
         >
-          <div
-            className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-            aria-hidden="true"
-          >
-            <div
-              className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-              style={{
-                clipPath:
-                  "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-              }}
-            />
-          </div>
-          <div
-            className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
-            aria-hidden="true"
-          >
-            <div
-              className="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
-              style={{
-                clipPath:
-                  "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-              }}
-            />
-          </div>
           <div className="max-w-3xl mx-auto">
             <h1 className="text-5xl font-bold tracking-tight sm:text-6xl mb-6">
-              Welcome to My Portfolio!
+              Welcome to My Portfolio
             </h1>
             <p className="text-lg whitespace-pre-line leading-relaxed mb-8">
               {introduction}
@@ -111,50 +91,41 @@ export default function Home() {
               href="#contact"
               className="inline-block rounded-md bg-white px-5 py-3 text-base font-medium text-sky-600 hover:bg-gray-100"
             >
-              Let's Get In Touch!
+              Let's Connect!
             </a>
           </div>
         </section>
 
+        {/* Skills Section */}
         <section id="skills" className="text-center px-4 mt-20 mb-10 w-full">
           <div className="py-24 sm:py-32">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
-              <div className="mx-auto max-w-2xl lg:max-w-none">
-                <div className="text-center">
-                  <h1 className="text-5xl font-bold text-sky-600 mb-10">
-                    My Skills
-                  </h1>
-                  <p className="mt-4 text-lg leading-8 text-sky-600">
-                    Just a few of my favorite techs:
-                  </p>
-                </div>
-                <dl className="mt-8 p-5 grid grid-cols-1 gap-6 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-4">
-                  {skills.map((skill) => (
-                    <div
-                      key={skill.name}
-                      className="flex items-center justify-center bg-sky-800 p-8 rounded-lg shadow-sm transition-transform transform hover:scale-105"
-                    >
-                      <skill.icon className="h-8 w-8 text-white mr-4" />
-                      <dt className="text-lg font-medium text-white">
-                        {skill.name}
-                      </dt>
-                    </div>
-                  ))}
-                </dl>
+              <div className="text-center">
+                <h1 className="text-5xl font-bold text-sky-600 mb-10">
+                  My Skills
+                </h1>
               </div>
+              <dl className="mt-8 p-5 grid grid-cols-1 gap-6 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-4">
+                {skills.map((skill) => (
+                  <div
+                    key={skill.name}
+                    className="flex items-center justify-center bg-sky-800 p-8 rounded-lg shadow-sm transition-transform transform hover:scale-105"
+                  >
+                    <skill.icon className="h-8 w-8 text-white mr-4" />
+                    <dt className="text-lg font-medium text-white">
+                      {skill.name}
+                    </dt>
+                  </div>
+                ))}
+              </dl>
             </div>
           </div>
         </section>
 
-        <section
-          id="projects"
-          className="text-center px-4 mt-20 mb-10 w-full bg-sky-900"
-        >
+        {/* Projects Section */}
+        <section id="projects" className="text-center px-4 mt-20 mb-10 w-full bg-sky-900">
           <div className="py-24 sm:py-32">
             <h1 className="text-6xl font-bold text-white mb-10">Projects</h1>
-            <p className="mt-4 text-lg leading-8 text-white">
-              Here are a few projects that I'm currently working on:
-            </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto pt-10">
               {projects.map((project) => (
                 <a
@@ -171,17 +142,15 @@ export default function Home() {
                         {project.description}
                       </p>
                     </div>
-                    <div className="flex justify-center  space-x-6 mb-5">
+                    <div className="flex justify-center space-x-6 mb-5">
                       {project.technologies.map((tech) => {
                         const Icon = projectTechnologies[tech];
-                        return (
-                          <Icon key={tech} className="h-8 w-8 text-sky-600" />
-                        );
+                        return <Icon key={tech} className="h-8 w-8 text-sky-600" />;
                       })}
                     </div>
                     <div className="mt-4">
                       <span className="text-sm font-medium text-sky-600 group-hover:text-sky-800">
-                        Check It Out! &rarr;
+                        View Project &rarr;
                       </span>
                     </div>
                   </div>
@@ -191,6 +160,7 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Contact Section */}
         <section id="contact" className="text-center px-4 mt-20 mb-10 w-full">
           <div className="relative isolate bg-white">
             <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-8 px-6 lg:px-8">
@@ -308,3 +278,4 @@ export default function Home() {
     </div>
   );
 }
+

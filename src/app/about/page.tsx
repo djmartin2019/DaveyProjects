@@ -1,20 +1,6 @@
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 
-const introduction = `
-  Hey there! I'm Davey, a passionate tech entrepreneur driven by a love for creation and a desire to provide value to others through innovative apps. From a young age, I've always enjoyed building things, and this passion has naturally led me to explore web development and entrepreneurship.
-
-  My mission is to make others' lives easier with user-first, integrity-driven solutions. I believe in the power of iteration and feedback, solving problems in ways that make sense to me and then refining those solutions based on user input. This approach ensures that the apps I create truly meet the needs of my users.
-
-  One of my core motivations is to support my passion for creating cool apps while launching a successful tech startup. Projects like "Validate My Idea" and "Why So Moody" are testaments to this ambition, offering practical tools for business validation and mental health tracking.
-
-  What I love most about being a tech entrepreneur is the freedom and limitless creativity it affords me. I strive to continuously innovate, guided by the principles of making a positive impact and enhancing user experiences.
-
-  Beyond my professional pursuits, I enjoy playing piano, guitar, and singing. These hobbies not only provide a creative outlet but also inspire my work in unexpected ways. Balancing my professional and personal life is crucial to staying motivated and focused.
-
-  Join me on this exciting journey as I build in public, share my experiences, and work towards making the world a better place, one app at a time.
-`;
-
 export default function About() {
   return (
     <div className="min-h-screen bg-sky-50 flex flex-col">
@@ -22,10 +8,86 @@ export default function About() {
 
       <main className="flex flex-col items-center justify-center py-10 flex-grow">
         <section id="about" className="w-full text-center px-4 mb-10">
-          <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg">
-            <h1 className="text-5xl font-bold text-sky-600 mb-6">About Me</h1>
-            <p className="text-lg text-gray-800 whitespace-pre-line leading-relaxed">
-              {introduction}
+          <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg text-left">
+            <h1 className="text-5xl font-bold text-sky-600 mb-6 text-center">
+              About Me
+            </h1>
+
+            {/* Introduction */}
+            <p className="text-lg text-gray-800 leading-relaxed mb-4">
+              I'm <strong>David Martin</strong>, a software developer and tech
+              entrepreneur passionate about building scalable, user-focused
+              applications. My journey into technology began with a curiosity
+              for problem-solving, which quickly evolved into a mission to
+              create innovative solutions that enhance productivity, efficiency,
+              and user experiences.
+            </p>
+
+            {/* Tech Focus */}
+            <p className="text-lg text-gray-800 leading-relaxed mb-4">
+              With a background in web development, data analytics, and cloud
+              architecture, I specialize in{" "}
+              <strong>Next.js, TypeScript, and serverless deployments</strong>.
+              My approach centers on <strong>iterative development</strong>,
+              ensuring that every product I build evolves based on real-world
+              feedback and continuous refinement.
+            </p>
+
+            {/* What Drives Me */}
+            <h2 className="text-2xl font-semibold text-sky-600 mt-6 mb-3">
+              What Drives Me
+            </h2>
+            <ul className="list-disc list-inside text-gray-800 text-lg space-y-2">
+              <li>
+                <strong>Empowering users:</strong> I design applications that
+                solve real problems and improve workflows.
+              </li>
+              <li>
+                <strong>Building scalable solutions:</strong> I focus on
+                performance, maintainability, and future-proofing applications.
+              </li>
+              <li>
+                <strong>Bridging technology and business:</strong> I leverage
+                technical expertise to drive innovation and product-market fit.
+              </li>
+            </ul>
+
+            {/* Projects */}
+            <h2 className="text-2xl font-semibold text-sky-600 mt-6 mb-3">
+              Current Projects
+            </h2>
+            <p className="text-lg text-gray-800 leading-relaxed">
+              My current projects include:
+            </p>
+            <ul className="list-disc list-inside text-gray-800 text-lg space-y-2">
+              <li>
+                <strong>Biblical Map App:</strong> An interactive tool that
+                provides historical context and scriptural references.
+              </li>
+              <li>
+                <strong>S&P 500 Data Analytics:</strong> A stock market analysis
+                platform leveraging Python, PostgreSQL, and Next.js for
+                real-time insights.
+              </li>
+            </ul>
+
+            {/* Music & Creativity */}
+            <h2 className="text-2xl font-semibold text-sky-600 mt-6 mb-3">
+              Beyond Tech
+            </h2>
+            <p className="text-lg text-gray-800 leading-relaxed">
+              Outside of software development, I'm a musician—I play piano,
+              guitar, and sing. Music and coding share a common thread: both
+              require creativity, precision, and a deep understanding of
+              patterns. This balance between technical and creative work
+              keeps me inspired.
+            </p>
+
+            {/* Closing Statement */}
+            <p className="text-lg text-gray-800 leading-relaxed mt-6">
+              Whether it's launching a SaaS product, refining an open-source
+              project, or solving complex data challenges, I'm always eager to
+              collaborate and push the boundaries of what's possible in tech.
             </p>
           </div>
         </section>
