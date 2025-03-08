@@ -27,8 +27,8 @@ export default function Navbar() {
         {/* Logo */}
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
-            <span className="sr-only">DaveyBits</span>
-            <h1 className="text-2xl font-bold text-white">DaveyBits</h1>
+            <span className="sr-only">DJM Tech</span>
+            <h1 className="text-2xl font-bold text-white">DJM Tech</h1>
           </Link>
         </div>
 
@@ -65,8 +65,8 @@ export default function Navbar() {
           {/* Mobile Menu Header */}
           <div className="flex items-center justify-between">
             <Link href="/" className="-m-1.5 p-1.5">
-              <span className="sr-only">DaveyBits</span>
-              <h1 className="text-2xl font-bold text-white">DaveyBits</h1>
+              <span className="sr-only">DJM Tech</span>
+              <h1 className="text-2xl font-bold text-white">DJM Tech</h1>
             </Link>
             <button
               type="button"

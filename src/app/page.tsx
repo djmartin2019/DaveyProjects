@@ -61,7 +61,7 @@ const skills = [
 ];
 
 const introduction = `
-  Hey there! I'm Davey, a passionate tech entrepreneur driven by a love for creation and a desire to provide value to others through innovative apps. From a young age, I've always enjoyed building things, and this passion has naturally led me to explore web development and entrepreneurship.
+  Hey there! I'm David, a passionate tech entrepreneur driven by a love for creation and a desire to provide value to others through innovative apps. From a young age, I've always enjoyed building things, and this passion has naturally led me to explore web development and entrepreneurship.
 `;
 
 export default function Home() {
