@@ -47,7 +47,7 @@ const projects: Project[] = [
     name: "S&P 500 Data Analytics",
     description:
       "A comprehensive stock market analysis tool leveraging PostgreSQL and Python to track sector performance, stock trends, and volatility metrics. Integrated with Next.js for interactive data visualization.",
-    url: "#", // Update with your real project link
+    url: "https://github.com/djmartin2019/stock-analysis-project", // Update with your real project link
     technologies: ["NextJS", "TailwindCSS", "TypeScript", "Vercel"],
   },
 ];
