@@ -36,7 +36,6 @@
       "typescript": "^5.8.2",
       "@types/react": "^18.3.18",
       "@types/react-dom": "^18.2.7",
-      "@tailwindcss/typography": "^0.5.13",
       "postcss": "^8"
     }
 }
