@@ -50,6 +50,12 @@ const projects: Project[] = [
     url: "https://github.com/djmartin2019/stock-analysis-project", // Update with your real project link
     technologies: ["NextJS", "TailwindCSS", "TypeScript", "Vercel"],
   },
+  {
+      name: "ToneLog",
+      description: "A music journaling app that allows users to log their music listening habits and create playlists. Built with Next.js, TypeScript, and Tailwind CSS.",
+      url: "https://tone-log.vercel.app/", // Update with your real project link
+      technologies: ["NextJS", "TailwindCSS", "TypeScript", "Vercel"],
+  },
 ];
 
 const skills = [
