@@ -10,6 +10,7 @@ import Link from "next/link";
 // ---------------------------------------------
 const navigation = [
   { name: "Home", href: "/" },
+  { name: "Blog", href: "/blog" },
   { name: "Skills", href: "/#skills" },
   { name: "Projects", href: "/#projects" },
   { name: "About", href: "/about" },

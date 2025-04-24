@@ -1,47 +1,42 @@
-"use client";
+import { allPosts } from "contentlayer/generated";
+import { notFound } from "next/navigation";
+import { useMDXComponent } from "next-contentlayer/hooks";
 
-import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
-import { SanityDocument } from "next-sanity";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
-import PostContent from "@/components/PostContent";
-import { getClient } from "@/sanity/lib/client";
-import { token } from "@/sanity/lib/token";
-import { POST_QUERY } from "@/sanity/lib/queries";
 
-export default function SinglePost() {
-  const { slug } = useParams() as { slug: string };
-  const [post, setPost] = useState<SanityDocument | null>(null);
-  const [isDraftMode, setIsDraftMode] = useState(false);
+export function generateStaticParams() {
+  return allPosts.map(p => ({ slug: p.slug }));
+}
 
-  useEffect(() => {
-    if (slug) {
-      const fetchPost = async () => {
-        const client = getClient(isDraftMode ? token : undefined);
-        const fetchedPost = await client.fetch<SanityDocument>(POST_QUERY, { slug });
-        setPost(fetchedPost);
-        setIsDraftMode(Boolean(process.env.SANITY_API_READ_TOKEN));
-      };
+export default function BlogPost({ params }: { params: { slug: string } }) {
+  const post = allPosts.find(p => p.slug === params.slug);
+  if (!post) notFound();
 
-      fetchPost();
-    }
-  }, [slug, isDraftMode]);
-
-  if (!post) {
-    return <div>Loading...</div>;
-  }
+  // turn the MDX code string into a React component
+  const MDXContent = useMDXComponent(post.body.code);
 
   return (
-    <div className="min-h-screen bg-sky-50 flex flex-col">
+    <div className="min-h-screen flex flex-col bg-neutral-950 text-gray-300 selection:bg-cyan-400/30">
       <Navbar />
-      <main className="flex-grow flex items-center justify-center bg-gradient-to-r from-sky-400 to-blue-500 p-4 lg:p-8">
-        <section className="w-full max-w-3xl lg:max-w-4xl xl:max-w-5xl bg-white rounded-lg shadow-md p-6 lg:p-10">
-          <PostContent post={post} />
-        </section>
+
+      <main className="flex-grow">
+        <article className="prose prose-invert mx-auto max-w-3xl px-4 py-16">
+          <h1 className="mb-0">{post.title}</h1>
+          <p className="mt-0 text-sm text-gray-400">
+            {new Date(post.date).toLocaleDateString(undefined, {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </p>
+
+          {/* Render the MDX body */}
+          <MDXContent />
+        </article>
       </main>
+
       <Footer />
     </div>
   );
 }
-

@@ -1,0 +1,100 @@
+---
+title: "How I Ditched Sanity and Shipped a Git-Backed MDX Blog in Next 14"
+date: "2025-04-24"
+summary: "A step-by-step rundown of wiring @next/mdx + Contentlayer + Tailwind’s prose classes to get a zero-overhead blog that deploys with Vercel."
+tags: ["nextjs", "mdx", "contentlayer", "vercel"]
+---
+
+> **TL;DR**
+> 1. `npm add @next/mdx contentlayer next-contentlayer rehype-prism-plus`
+> 2. Wire `next.config.mjs` with `nextMdx` + `withContentlayer`
+> 3. Drop posts into `content/posts/*.mdx` — _done._
+
+---
+
+## Why I Bailed on a Headless CMS
+
+For a personal blog or portfolio site, spinning up a full-featured CMS like Sanity started to feel like way too much overhead. I didn’t need real-time APIs or a fancy dashboard to push blog posts about things like setting up blog posts (the irony). I just wanted something fast, simple, version-controlled, and cheap.
+
+By moving to a Git-backed approach with MDX, my content ships right alongside my code at build time. No latency, no external dependencies, and no surprise bills from yet another hosted service.
+
+Bonus: every post now lives in my repo. Every change is in the commit history. I can PR my own typos. Peak accountability.
+
+### The Tiny Toolchain
+I used four main tools to wire this thing up:
+- `@next/mdx` for MDX support in Next.js 14.
+- `contentlayer` for fetching and transforming content from MDX files.
+- `next-contentlayer` for integrating Contentlayer with Next.js.
+- `rehype-prism-plus` for syntax highlighting inside code blocks.
+
+You can install them like this:
+```bash
+npm add @next/mdx contentlayer next-contentlayer rehype-prism-plus
+```
+
+## Setting Up `next.config.mjs`
+here's the basic config setup to wire MDX and Contentlayer together:
+```js
+import { withContentlayer } from 'next-contentlayer';
+import { createMDX } from '@next/mdx';
+
+const withMDX = createMDX();
+
+const nextConfig = {
+  experimental: {
+    appDir: true,
+  },
+};
+
+export default withContentlayer(withMDX(nextConfig));
+```
+
+## Folder Structure
+I keep my posts in `/content/posts`, each as an `.mdx` file. Something like:
+```bash
+/content
+└── posts
+    ├── firstpost.mdx
+    ├── secondpost.mdx
+    └── thirdpost.mdx
+```
+
+## Defining the Content Schema
+Here's my `contentlayer.config.ts` file to define the schema:
+```ts
+import { defineDocumentType, makeSource } from 'contentlayer/source-files';
+
+const Post = defineDocumentType(() => ({
+  name: 'Post',
+  filePathPattern: `posts/*.mdx`,
+  fields: {
+    title: { type: 'string', required: true },
+    date: { type: 'date', required: true },
+    summary: { type: 'string', required: true },
+    tags: { type: 'list', of: { type: 'string' } },
+  },
+}));
+
+export default makeSource({
+  contentDirPath: 'content',
+  documentTypes: [Post],
+});
+```
+This gives me typed access to my content at build time and makes fetching metadata in components super straightforward.
+
+## Styling with Tailwind
+For basic typography, I'm using Tailwind's `prose` classes from `@tailwind/typography`. This gives readable defaults for things like headings, paragraphs, and code blocks, without me needing to micromanage every line of CSS.
+
+Example:
+```tsx
+<article className="prose prose-neutral dark:prose-invert mx-auto">
+  {children}
+</article>
+```
+
+## Should You Do This Too?
+If you’re blogging casually or running a personal site, this setup is hard to beat. It’s fast, free, version-controlled, and doesn’t make me sign into yet another dashboard just to fix a typo.
+
+If you’re running a content team with non-technical editors? Probably not. But for solo devs who want the lowest-friction way to ship posts, it works great.
+
+**The takeaway:** don’t overthink your stack if the goal is just to share your thoughts. Get it online, then worry about fancy features later—if at all.
