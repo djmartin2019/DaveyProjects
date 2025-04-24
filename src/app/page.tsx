@@ -87,7 +87,7 @@ const projects: Project[] = [
     name: "ToneLog",
     description:
       "Cyber‑punk‑esque music journal for tracking practice & playlists.",
-    url: "https://tone-log.vercel.app/",
+    url: "https://www.tonelog.com/",
     technologies: ["NextJS", "TailwindCSS", "TypeScript", "Vercel"],
   },
 ];
