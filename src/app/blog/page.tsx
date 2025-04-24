@@ -3,7 +3,7 @@
 
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
-import { allPosts } from "contentlayer/generated";
+import { allPosts } from "../../../.contentlayer/generated";
 import Link from "next/link";
 
 export default function BlogIndex() {

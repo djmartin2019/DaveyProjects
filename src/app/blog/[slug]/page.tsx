@@ -1,4 +1,5 @@
-import { allPosts } from "contentlayer/generated";
+import { allPosts } from "../../../../.contentlayer/generated";
+
 import { notFound } from "next/navigation";
 import { useMDXComponent } from "next-contentlayer/hooks";
 
