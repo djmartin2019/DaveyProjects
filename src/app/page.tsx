@@ -136,7 +136,7 @@ export default function Home() {
         />
       </Head>
 
-      <Navbar mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} />
+      <Navbar />
 
       <main className="flex flex-col items-center justify-center flex-grow">
         {/* Hero */}
