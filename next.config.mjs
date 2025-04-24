@@ -1,7 +1,12 @@
 import { withContentlayer } from "next-contentlayer";
 import nextMdx from "@next/mdx";
 import rehypePrism from "rehype-prism-plus";
-import path from "path";
+import { fileURLToPath } from "url";
+import { dirname, resolve } from "path";
+
+// 🛠 Fix for __dirname not existing in ESM:
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const withMDX = nextMdx({
   extension: /\.mdx?$/,
@@ -11,13 +16,15 @@ const withMDX = nextMdx({
   },
 });
 
-export default withContentlayer(
-  withMDX({
-    pageExtensions: ["ts", "tsx", "md", "mdx"],
-    webpack(config) {
-      config.resolve.alias["@"] = path.resolve(__dirname, "src");
-      return config;
-    },
-  })
-);
+const nextConfig = {
+  pageExtensions: ["ts", "tsx", "md", "mdx"],
+  webpack(config) {
+    config.resolve.alias["@"] = resolve(__dirname, "src");
+    return config;
+  },
+};
+
+const config = withContentlayer(withMDX(nextConfig));
+
+export default config;
 
