@@ -3,6 +3,8 @@
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 
+/* ────────────────  DATA  ──────────────── */
+
 type ExperienceItem = {
   title: string;
   company?: string;
@@ -15,7 +17,6 @@ type ProjectItem = {
   details: string[];
 };
 
-// Experience Data
 const experiences: ExperienceItem[] = [
   {
     title: "Project Coordinator I",
@@ -30,10 +31,10 @@ const experiences: ExperienceItem[] = [
   {
     title: "Fleet Implementation Associate",
     company: "HCSS",
-    date: "June 2022 - January 2023",
+    date: "June 2022 – January 2023",
     responsibilities: [
       "Guided clients through software installation, configuration, and data migrations.",
-      "Provided targeted training sessions to improve user confidence and system usage.",
+      "Delivered targeted training sessions to improve user confidence and system usage.",
       "Leveraged SQL for data validation, troubleshooting, and resolving client issues.",
     ],
   },
@@ -44,77 +45,81 @@ const experiences: ExperienceItem[] = [
     responsibilities: [
       "Provided technical support and troubleshooting for desktop and web-based fleet management solutions.",
       "Created a scalable C# migration tool, reducing support overhead and manual troubleshooting.",
-      "Developed SQL reports and database models for efficient customer support issue resolution.",
-      "Expanded ‘The Hub’ training platform, onboarding 200+ users and improving knowledge-sharing across the organization.",
+      "Developed SQL reports and database models for efficient customer-issue resolution.",
+      "Expanded “The Hub” training platform, onboarding 200+ users and improving knowledge-sharing across the organization.",
     ],
   },
   {
     title: "Administrative Student Assistant",
-    company: "Office of the VP of Student Affairs",
-    date: "August 2017 - May 2019",
+    company: "Office of the VP of Student Affairs, University of Houston",
+    date: "August 2017 – May 2019",
     responsibilities: [
-      "Streamlined event and travel management workflows through Excel automation using VBA.",
-      "Created Power BI dashboards for visualizing operational metrics to support stakeholder decision-making.",
+      "Streamlined event and travel management workflows with Excel automation (VBA).",
+      "Developed Power BI dashboards to visualize operational metrics and support stakeholder decision-making.",
     ],
   },
 ];
 
-// Project Data
 const projects: ProjectItem[] = [
   {
     title: "S&P 500 Data Engineering & Analytics",
     details: [
-      "Developing a PostgreSQL-based pipeline to manage and analyze 2.5M+ rows of historical stock market data.",
-      "Building automated Python scripts to fetch, process, and store financial data, enabling detailed market trend analysis.",
-      "Designing an interactive frontend using Next.js and TailwindCSS to visualize sector performance, top performers, volatility metrics, and moving averages.",
+      "Building a PostgreSQL pipeline to manage and analyze 2.5 M+ rows of historical stock data.",
+      "Automating Python scripts to fetch, process, and store financial data for market-trend insights.",
+      "Designing an interactive Next.js + Tailwind dashboard to visualize sector performance, volatility, and moving averages.",
     ],
   },
   {
     title: "United City Church Website Development",
     details: [
-      "Designing a responsive, modern website with Webflow focused on enhancing user experience and accessibility.",
-      "Created a custom documentation site using Mkdocs, enabling non-technical stakeholders to manage updates.",
-      "Collaborated with stakeholders to define project requirements, ensuring scalability and long-term functionality.",
+      "Designing a responsive, accessible site in Webflow to elevate user experience.",
+      "Created a custom documentation portal with MkDocs, empowering non-technical stakeholders to manage updates.",
+      "Collaborated with leadership to define requirements, ensuring scalability and long-term maintainability.",
     ],
   },
 ];
 
 export default function Resume() {
   return (
-    <div className="min-h-screen bg-sky-50 flex flex-col">
+    <div className="min-h-screen flex flex-col bg-neutral-950 text-gray-300 selection:bg-cyan-400/30">
       <Navbar />
 
-      <main className="flex flex-col items-center justify-center flex-grow py-10 px-4 sm:px-6 lg:px-8">
-        <section className="w-full max-w-4xl bg-white shadow-lg rounded-2xl p-8 sm:p-12 border border-gray-200">
+      <main className="flex flex-col items-center flex-grow py-16 px-4 sm:px-6 lg:px-8">
+        {/* ——— Glass card ——— */}
+        <section className="w-full max-w-4xl rounded-2xl border border-neutral-800 bg-neutral-900/70 backdrop-blur-md p-8 sm:p-12 shadow-xl">
           {/* Header */}
-          <h1 className="text-4xl font-bold text-sky-600 text-center mb-6">
-            David Martin
+          <h1 className="mb-2 text-center text-4xl font-extrabold tracking-tight text-cyan-400">
+            David&nbsp;Martin
           </h1>
-          <p className="text-center text-lg text-gray-700 mb-8">
-            Software & Data Professional | Technical Project Coordinator | Next.js & Vercel Enthusiast
+          <p className="mb-8 text-center text-lg">
+            Software&nbsp;&amp;&nbsp;Data Professional&nbsp;| Technical Project Coordinator&nbsp;|&nbsp;Next.js&nbsp;&amp;&nbsp;Vercel&nbsp;Enthusiast
           </p>
 
-          <div className="border-t border-gray-300 my-6"></div>
+          <hr className="my-6 border-neutral-800" />
 
           {/* Summary */}
-          <h2 className="text-2xl font-semibold text-sky-700">Summary</h2>
-          <p className="text-gray-800 mt-2 leading-relaxed">
-            Experienced Technical Project Coordinator with 7 years focused on software implementation, client training, technical support, and project management. Passionate about guiding users through successful software onboarding experiences, bridging technical and non-technical teams effectively. Enthusiastic advocate for modern web technologies (Next.js, Vercel) with practical experience through personal projects and continuous learning.
+          <h2 className="text-2xl font-semibold text-cyan-400">Summary</h2>
+          <p className="mt-2 leading-relaxed">
+            Experienced Technical Project Coordinator with 7 years in software implementation,
+            client training, and technical support. Passionate about guiding users through
+            smooth onboarding, and an advocate for modern web stacks (Next.js, Vercel) via
+            personal projects and continuous learning.
           </p>
 
-          <div className="border-t border-gray-300 my-6"></div>
+          <hr className="my-6 border-neutral-800" />
 
-          {/* Experience Section */}
-          <h2 className="text-2xl font-semibold text-sky-700">Experience</h2>
-          {experiences.map((job, index) => (
-            <div key={index} className="mt-6">
+          {/* Experience */}
+          <h2 className="text-2xl font-semibold text-cyan-400">Experience</h2>
+          {experiences.map((job, i) => (
+            <div key={i} className="mt-6">
               <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center">
-                <h3 className="text-lg font-semibold text-gray-900">
-                  {job.title} {job.company && `– ${job.company}`}
+                <h3 className="text-lg font-semibold text-gray-100">
+                  {job.title}
+                  {job.company && ` – ${job.company}`}
                 </h3>
-                <p className="text-gray-600 italic sm:text-right">{job.date}</p>
+                <p className="italic text-gray-400 sm:text-right">{job.date}</p>
               </div>
-              <ul className="list-disc list-inside text-gray-800 mt-2 space-y-2">
+              <ul className="mt-2 space-y-2 list-disc list-inside">
                 {job.responsibilities.map((item, idx) => (
                   <li key={idx}>{item}</li>
                 ))}
@@ -122,48 +127,57 @@ export default function Resume() {
             </div>
           ))}
 
-          <div className="border-t border-gray-300 my-6"></div>
+          <hr className="my-6 border-neutral-800" />
 
-          {/* Projects Section */}
-          <h2 className="text-2xl font-semibold text-sky-700">Projects</h2>
-          {projects.map((project, index) => (
-            <div key={index} className="mt-4">
-              <h3 className="text-lg font-semibold text-gray-900">{project.title}</h3>
-              <ul className="list-disc list-inside text-gray-800 mt-2 space-y-2">
-                {project.details.map((detail, idx) => (
-                  <li key={idx}>{detail}</li>
+          {/* Projects */}
+          <h2 className="text-2xl font-semibold text-cyan-400">Projects</h2>
+          {projects.map((p, i) => (
+            <div key={i} className="mt-4">
+              <h3 className="text-lg font-semibold text-gray-100">{p.title}</h3>
+              <ul className="mt-2 space-y-2 list-disc list-inside">
+                {p.details.map((d, idx) => (
+                  <li key={idx}>{d}</li>
                 ))}
               </ul>
             </div>
           ))}
 
-          <div className="border-t border-gray-300 my-6"></div>
+          <hr className="my-6 border-neutral-800" />
 
           {/* Education */}
-          <h2 className="text-2xl font-semibold text-sky-700">Education</h2>
-          <p className="mt-2 text-gray-800">
-            <strong>University of Houston – C.T. Bauer College of Business</strong><br />
-            Bachelor of Business Administration (BBA), Management Information Systems | May 2019
+          <h2 className="text-2xl font-semibold text-cyan-400">Education</h2>
+          <p className="mt-2">
+            <strong className="text-gray-100">
+              University of Houston – C.T. Bauer College of Business
+            </strong>
+            <br />
+            Bachelor of Business Administration (BBA), Management Information Systems — May 2019
           </p>
 
-          <div className="border-t border-gray-300 my-6"></div>
+          <hr className="my-6 border-neutral-800" />
 
           {/* Skills */}
-          <h2 className="text-2xl font-semibold text-sky-700">Skills</h2>
-          <ul className="list-disc list-inside text-gray-800 mt-2 space-y-2">
-            <li><strong>Programming:</strong> Python, SQL, JavaScript (Next.js, React)</li>
-            <li><strong>Data & Cloud:</strong> PostgreSQL, AWS S3, ETL Pipelines</li>
-            <li><strong>Tools:</strong> Vercel, Webflow, Notion, Mkdocs, GitHub Actions</li>
+          <h2 className="text-2xl font-semibold text-cyan-400">Skills</h2>
+          <ul className="mt-2 space-y-2 list-disc list-inside">
+            <li>
+              <strong>Programming:</strong> Python, SQL, JavaScript (Next.js, React)
+            </li>
+            <li>
+              <strong>Data &amp; Cloud:</strong> PostgreSQL, AWS S3, ETL Pipelines
+            </li>
+            <li>
+              <strong>Tools:</strong> Vercel, Webflow, Notion, Mkdocs, GitHub Actions
+            </li>
           </ul>
 
-          <div className="border-t border-gray-300 my-6"></div>
+          <hr className="my-6 border-neutral-800" />
 
-          {/* Resume Download */}
-          <div className="text-center mt-8">
+          {/* Download */}
+          <div className="mt-8 text-center">
             <a
               href="/david_martin_resume.pdf"
               download
-              className="inline-block bg-sky-600 hover:bg-sky-500 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-all"
+              className="inline-block rounded-lg bg-cyan-400 px-6 py-3 font-semibold text-neutral-900 shadow-md transition hover:bg-cyan-300"
             >
               Download Resume (PDF)
             </a>

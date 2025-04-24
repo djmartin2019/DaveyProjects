@@ -1,95 +1,102 @@
+/* app/about/page.tsx (Next 13/14 app router) */
+"use client";
+
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-sky-50 flex flex-col">
+    <div className="min-h-screen flex flex-col bg-neutral-950 text-gray-300 selection:bg-cyan-400/30">
       <Navbar />
 
-      <main className="flex flex-col items-center justify-center py-10 flex-grow">
-        <section id="about" className="w-full text-center px-4 mb-10">
-          <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg text-left">
-            <h1 className="text-5xl font-bold text-sky-600 mb-6 text-center">
-              About Me
-            </h1>
+      <main className="flex flex-col items-center flex-grow py-16 px-4">
+        {/* ——— About Card ——— */}
+        <section
+          id="about"
+          className="w-full max-w-4xl rounded-2xl border border-neutral-800 bg-neutral-900/70 backdrop-blur-md p-10 shadow-xl"
+        >
+          <h1 className="mb-8 text-center text-5xl font-extrabold tracking-tight text-cyan-400">
+            About&nbsp;Me
+          </h1>
 
-            {/* Introduction */}
-            <p className="text-lg text-gray-800 leading-relaxed mb-4">
-              I'm <strong>David Martin</strong>, a software developer and tech
-              entrepreneur passionate about building scalable, user-focused
-              applications. My journey into technology began with a curiosity
-              for problem-solving, which quickly evolved into a mission to
-              create innovative solutions that enhance productivity, efficiency,
-              and user experiences.
-            </p>
+          {/* Intro */}
+          <p className="mb-5 leading-relaxed">
+            I’m <strong className="text-gray-100">David Martin</strong>—a
+            software developer, entrepreneur, and soon-to-be <em>Vercel&nbsp;insider</em>.
+            My passion sits at the intersection of{" "}
+            <strong className="text-gray-100">
+              elegant DX&nbsp;&&nbsp;scalable architecture
+            </strong>
+            . From fast MVPs to enterprise-grade rebuilds, I ship code that
+            solves real-world pain points and looks good doing it.
+          </p>
 
-            {/* Tech Focus */}
-            <p className="text-lg text-gray-800 leading-relaxed mb-4">
-              With a background in web development, data analytics, and cloud
-              architecture, I specialize in{" "}
-              <strong>Next.js, TypeScript, and serverless deployments</strong>.
-              My approach centers on <strong>iterative development</strong>,
-              ensuring that every product I build evolves based on real-world
-              feedback and continuous refinement.
-            </p>
+          {/* Tech Focus */}
+          <p className="mb-5 leading-relaxed">
+            You’ll usually find me wrangling{" "}
+            <span className="text-gray-100">Next.js&nbsp;14, TypeScript</span>,
+            and serverless infra (Vercel Functions, Edge, Supabase, and friends).
+            I’m an <em>iterate-to-greatness</em> believer—ship, learn, polish,
+            repeat.
+          </p>
 
-            {/* What Drives Me */}
-            <h2 className="text-2xl font-semibold text-sky-600 mt-6 mb-3">
-              What Drives Me
-            </h2>
-            <ul className="list-disc list-inside text-gray-800 text-lg space-y-2">
-              <li>
-                <strong>Empowering users:</strong> I design applications that
-                solve real problems and improve workflows.
-              </li>
-              <li>
-                <strong>Building scalable solutions:</strong> I focus on
-                performance, maintainability, and future-proofing applications.
-              </li>
-              <li>
-                <strong>Bridging technology and business:</strong> I leverage
-                technical expertise to drive innovation and product-market fit.
-              </li>
-            </ul>
+          {/* What Drives Me */}
+          <h2 className="mt-10 mb-4 text-2xl font-semibold text-cyan-400">
+            What&nbsp;Drives&nbsp;Me
+          </h2>
+          <ul className="space-y-2 pl-5 marker:text-cyan-400 list-disc">
+            <li>
+              **Empowering users** – tooling that erases friction and sparks joy.
+            </li>
+            <li>
+              **Scalability** – performance today, maintainability tomorrow.
+            </li>
+            <li>
+              **Tech&nbsp;×&nbsp;Business** – code is only great when it moves
+              the needle.
+            </li>
+          </ul>
 
-            {/* Projects */}
-            <h2 className="text-2xl font-semibold text-sky-600 mt-6 mb-3">
-              Current Projects
-            </h2>
-            <p className="text-lg text-gray-800 leading-relaxed">
-              My current projects include:
-            </p>
-            <ul className="list-disc list-inside text-gray-800 text-lg space-y-2">
-              <li>
-                <strong>Biblical Map App:</strong> An interactive tool that
-                provides historical context and scriptural references.
-              </li>
-              <li>
-                <strong>S&P 500 Data Analytics:</strong> A stock market analysis
-                platform leveraging Python, PostgreSQL, and Next.js for
-                real-time insights.
-              </li>
-            </ul>
+          {/* Projects */}
+          <h2 className="mt-10 mb-4 text-2xl font-semibold text-cyan-400">
+            Current&nbsp;Projects
+          </h2>
+          <ul className="space-y-2 pl-5 marker:text-cyan-400 list-disc">
+            <li>
+              <strong>Biblical Map App</strong> – interactive cartography +
+              contextual scripture insights.
+            </li>
+            <li>
+              <strong>S&amp;P 500 Analytics</strong> – Python&nbsp;+&nbsp;
+              PostgreSQL pipeline with a Next.js dashboard.
+            </li>
+            <li>
+              <strong>ToneLog</strong> – cyber-punky music-practice journal
+              tracking sets, exercises, and listening habits.
+            </li>
+          </ul>
 
-            {/* Music & Creativity */}
-            <h2 className="text-2xl font-semibold text-sky-600 mt-6 mb-3">
-              Beyond Tech
-            </h2>
-            <p className="text-lg text-gray-800 leading-relaxed">
-              Outside of software development, I'm a musician—I play piano,
-              guitar, and sing. Music and coding share a common thread: both
-              require creativity, precision, and a deep understanding of
-              patterns. This balance between technical and creative work
-              keeps me inspired.
-            </p>
+          {/* Music & Creativity */}
+          <h2 className="mt-10 mb-4 text-2xl font-semibold text-cyan-400">
+            Beyond&nbsp;Tech
+          </h2>
+          <p className="leading-relaxed">
+            When I’m not slinging code, I’m on bass, guitar, or keys—sometimes
+            all three in the same set. Music and programming share the same
+            secret sauce: patterns, groove, and relentless iteration.
+          </p>
 
-            {/* Closing Statement */}
-            <p className="text-lg text-gray-800 leading-relaxed mt-6">
-              Whether it's launching a SaaS product, refining an open-source
-              project, or solving complex data challenges, I'm always eager to
-              collaborate and push the boundaries of what's possible in tech.
-            </p>
-          </div>
+          {/* CTA */}
+          <p className="mt-10 leading-relaxed">
+            Got an ambitious idea or just want to geek out about edge caching
+            and chorus pedals?{" "}
+            <a
+              href="/#contact"
+              className="font-semibold text-cyan-400 hover:underline"
+            >
+              Let’s&nbsp;talk&nbsp;→
+            </a>
+          </p>
         </section>
       </main>
 
@@ -97,3 +104,4 @@ export default function About() {
     </div>
   );
 }
+

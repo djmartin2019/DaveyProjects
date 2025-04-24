@@ -1,5 +1,6 @@
 "use client";
 
+import Head from "next/head";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { useState } from "react";
@@ -15,10 +16,42 @@ import {
   SiVercel,
   SiSupabase,
 } from "react-icons/si";
-
 import { IconType } from "react-icons";
 
-type Technology = "NextJS" | "TailwindCSS" | "TypeScript" | "Vercel" | "Supabase";
+// -----------------------------
+// SEO + Structured‑Data helpers
+// -----------------------------
+const seo = {
+  title: "David Martin | Full‑Stack Developer & Entrepreneur",
+  description:
+    "Portfolio of David Martin – showcasing modern web, data & music projects built with Next.js, TypeScript, Vercel & Supabase.",
+  url: "https://davidmartin.dev/", // <- set to your canonical domain
+  image: "https://davidmartin.dev/og-image.png", // <- optional social image
+};
+
+// JSON‑LD structured data (Person)
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "David Martin",
+  url: seo.url,
+  sameAs: [
+    "https://github.com/djmartin2019",
+    "https://www.linkedin.com/in/davidmartin/",
+  ],
+  jobTitle: "Software Developer & Entrepreneur",
+};
+
+// -----------------------------
+// Types & Sample Data
+// -----------------------------
+
+type Technology =
+  | "NextJS"
+  | "TailwindCSS"
+  | "TypeScript"
+  | "Vercel"
+  | "Supabase";
 
 const projectTechnologies: Record<Technology, IconType> = {
   NextJS: SiNextdotjs,
@@ -39,22 +72,23 @@ const projects: Project[] = [
   {
     name: "Biblical Map App",
     description:
-      "A historical and interactive map application designed to help users explore biblical locations with contextual scripture references and historical insights. Built with modern web technologies for a seamless experience.",
-    url: "https://biblical-map.vercel.app/", // Update with your real project link
+      "Interactive map for exploring biblical locations with scripture & historical context.",
+    url: "https://biblical-map.vercel.app/",
     technologies: ["NextJS", "TailwindCSS", "TypeScript", "Vercel"],
   },
   {
-    name: "S&P 500 Data Analytics",
+    name: "S&P 500 Analytics",
     description:
-      "A comprehensive stock market analysis tool leveraging PostgreSQL and Python to track sector performance, stock trends, and volatility metrics. Integrated with Next.js for interactive data visualization.",
-    url: "https://github.com/djmartin2019/stock-analysis-project", // Update with your real project link
+      "Comprehensive market‑analysis dashboard using PostgreSQL, Python & Next.js.",
+    url: "https://github.com/djmartin2019/stock-analysis-project",
     technologies: ["NextJS", "TailwindCSS", "TypeScript", "Vercel"],
   },
   {
-      name: "ToneLog",
-      description: "A music journaling app that allows users to log their music listening habits and create playlists. Built with Next.js, TypeScript, and Tailwind CSS.",
-      url: "https://tone-log.vercel.app/", // Update with your real project link
-      technologies: ["NextJS", "TailwindCSS", "TypeScript", "Vercel"],
+    name: "ToneLog",
+    description:
+      "Cyber‑punk‑esque music journal for tracking practice & playlists.",
+    url: "https://tone-log.vercel.app/",
+    technologies: ["NextJS", "TailwindCSS", "TypeScript", "Vercel"],
   },
 ];
 
@@ -69,213 +103,153 @@ const skills = [
   { name: "TypeScript", icon: SiTypescript },
 ];
 
-const introduction = `
-  Hi, I'm David—an entrepreneur and software developer passionate about building modern web applications. I specialize in Next.js, TypeScript, and cloud-based solutions, focusing on seamless user experiences and scalable architectures. Whether it's data-driven applications or interactive platforms, I'm driven by innovation and problem-solving.
-`;
+const introduction = `Hi, I'm David — an entrepreneur & developer obsessed with shipping delightful, scalable experiences. I wield Next.js + TypeScript on Vercel to turn ideas into reality — fast.`;
+
+// -----------------------------
+// Component
+// -----------------------------
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-sky-50 flex flex-col">
-      <Navbar />
+    <div className="min-h-screen bg-neutral-950 text-gray-200 flex flex-col selection:bg-cyan-400/40">
+      {/* <head> for SEO */}
+      <Head>
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
+        <link rel="canonical" href={seo.url} />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="David Martin Portfolio" />
+        <meta property="og:title" content={seo.title} />
+        <meta property="og:description" content={seo.description} />
+        <meta property="og:url" content={seo.url} />
+        {seo.image && <meta property="og:image" content={seo.image} />}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={seo.title} />
+        <meta name="twitter:description" content={seo.description} />
+        {seo.image && <meta name="twitter:image" content={seo.image} />}
+        <script
+          type="application/ld+json"
+          // eslint‑disable‑next‑line react/no-danger
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </Head>
+
+      <Navbar mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} />
 
       <main className="flex flex-col items-center justify-center flex-grow">
-        {/* Hero Section */}
+        {/* Hero */}
         <section
           id="hero"
-          className="relative w-full text-center px-4 py-8 sm:py-10 lg:py-12 bg-gradient-to-r from-sky-400 to-blue-500 text-white min-h-screen flex flex-col items-center justify-center"
+          className="relative w-full text-center px-4 py-16 lg:py-24 flex flex-col items-center justify-center bg-gradient-to-br from-cyan-500/30 via-blue-800/40 to-neutral-950"
         >
           <div className="max-w-3xl mx-auto">
-            <h1 className="text-5xl font-bold tracking-tight sm:text-6xl mb-6">
-              Welcome to My Portfolio
+            <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-cyan-400 drop-shadow-[0_0_8px_theme('colors.cyan.400')]">
+              Building Future‑Proof Web Experiences
             </h1>
-            <p className="text-lg whitespace-pre-line leading-relaxed mb-8">
+            <p className="mt-8 text-lg md:text-xl leading-relaxed whitespace-pre-line">
               {introduction}
             </p>
             <a
               href="#contact"
-              className="inline-block rounded-md bg-white px-5 py-3 text-base font-medium text-sky-600 hover:bg-gray-100"
+              className="mt-10 inline-block rounded-lg bg-cyan-500/80 px-6 py-3 text-lg font-semibold text-neutral-950 shadow-xl backdrop-blur hover:bg-cyan-400/90 transition-colors"
             >
-              Let's Connect!
+              Let’s Connect ↗
             </a>
           </div>
         </section>
 
-        {/* Skills Section */}
-        <section id="skills" className="text-center px-4 mt-20 mb-10 w-full">
-          <div className="py-24 sm:py-32">
-            <div className="mx-auto max-w-7xl px-6 lg:px-8">
-              <div className="text-center">
-                <h1 className="text-5xl font-bold text-sky-600 mb-10">
-                  My Skills
-                </h1>
-              </div>
-              <dl className="mt-8 p-5 grid grid-cols-1 gap-6 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-4">
-                {skills.map((skill) => (
-                  <div
-                    key={skill.name}
-                    className="flex items-center justify-center bg-sky-800 p-8 rounded-lg shadow-sm transition-transform transform hover:scale-105"
-                  >
-                    <skill.icon className="h-8 w-8 text-white mr-4" />
-                    <dt className="text-lg font-medium text-white">
-                      {skill.name}
-                    </dt>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          </div>
-        </section>
-
-        {/* Projects Section */}
-        <section id="projects" className="text-center px-4 mt-20 mb-10 w-full bg-sky-900">
-          <div className="py-24 sm:py-32">
-            <h1 className="text-6xl font-bold text-white mb-10">Projects</h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto pt-10">
-              {projects.map((project) => (
-                <a
-                  key={project.name}
-                  href={project.url}
-                  className="p-6 bg-white rounded-lg shadow-lg hover:shadow-2xl transition-transform transform hover:scale-105 group"
-                >
-                  <div className="flex flex-col h-full">
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-semibold text-gray-900 mb-4 group-hover:text-sky-600">
-                        {project.name}
-                      </h3>
-                      <p className="text-gray-700 group-hover:text-gray-900 mb-5">
-                        {project.description}
-                      </p>
-                    </div>
-                    <div className="flex justify-center space-x-6 mb-5">
-                      {project.technologies.map((tech) => {
-                        const Icon = projectTechnologies[tech];
-                        return <Icon key={tech} className="h-8 w-8 text-sky-600" />;
-                      })}
-                    </div>
-                    <div className="mt-4">
-                      <span className="text-sm font-medium text-sky-600 group-hover:text-sky-800">
-                        View Project &rarr;
-                      </span>
-                    </div>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Contact Section */}
-        <section id="contact" className="text-center px-4 mt-20 mb-10 w-full">
-          <div className="relative isolate bg-white">
-            <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-8 px-6 lg:px-8">
-              <div className="relative px-6 pb-20 pt-24 sm:pt-32 lg:static lg:px-8 lg:py-48">
-                <div className="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
-                  <div className="absolute inset-y-0 left-0 -z-10 w-full overflow-hidden bg-sky-100 ring-1 ring-sky-900/10 lg:w-1/2"></div>
-                  <h2 className="text-3xl font-bold tracking-tight text-sky-900">
-                    Let's Chat!
-                  </h2>
-                  <p className="mt-6 text-lg leading-8 text-sky-600 whitespace-pre-line">
-                    I'm always excited to connect with fellow tech enthusiasts,
-                    entrepreneurs, and anyone curious about my projects. Whether
-                    you have a question, a suggestion, or just want to say hi,
-                    feel free to reach out! Let's collaborate and create
-                    something amazing together.
-                  </p>
-                </div>
-              </div>
-              <form
-                action="https://formspree.io/f/xpwaawlp"
-                method="POST"
-                className="px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:py-48"
+        {/* Skills */}
+        <section id="skills" className="w-full py-24 px-6">
+          <h2 className="text-center text-4xl font-bold text-cyan-400 mb-16">
+            Tech Arsenal
+          </h2>
+          <ul className="mx-auto grid max-w-6xl grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
+            {skills.map(({ name, icon: Icon }) => (
+              <li
+                key={name}
+                className="flex flex-col items-center justify-center rounded-xl bg-neutral-900 ring-1 ring-neutral-800 p-6 hover:ring-cyan-500/60 transition-all"
               >
-                <div className="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
-                  <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-                    <div className="sm:col-span-2">
-                      <label
-                        htmlFor="first-name"
-                        className="block text-sm font-semibold leading-6 text-sky-900"
-                      >
-                        First name
-                      </label>
-                      <div className="mt-2.5">
-                        <input
-                          type="text"
-                          name="first-name"
-                          id="first-name"
-                          autoComplete="given-name"
-                          className="block w-full rounded-md border-0 px-3.5 py-2 text-sky-900 shadow-sm ring-1 ring-inset ring-sky-300 placeholder:text-sky-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
-                          required
-                        />
-                      </div>
-                    </div>
-                    <div className="sm:col-span-2">
-                      <label
-                        htmlFor="last-name"
-                        className="block text-sm font-semibold leading-6 text-sky-900"
-                      >
-                        Last name
-                      </label>
-                      <div className="mt-2.5">
-                        <input
-                          type="text"
-                          name="last-name"
-                          id="last-name"
-                          autoComplete="family-name"
-                          className="block w-full rounded-md border-0 px-3.5 py-2 text-sky-900 shadow-sm ring-1 ring-inset ring-sky-300 placeholder:text-sky-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
-                          required
-                        />
-                      </div>
-                    </div>
-                    <div className="sm:col-span-2">
-                      <label
-                        htmlFor="email"
-                        className="block text-sm font-semibold leading-6 text-sky-900"
-                      >
-                        Email
-                      </label>
-                      <div className="mt-2.5">
-                        <input
-                          type="email"
-                          name="email"
-                          id="email"
-                          autoComplete="email"
-                          className="block w-full rounded-md border-0 px-3.5 py-2 text-sky-900 shadow-sm ring-1 ring-inset ring-sky-300 placeholder:text-sky-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
-                          required
-                        />
-                      </div>
-                    </div>
-                    <div className="sm:col-span-2">
-                      <label
-                        htmlFor="message"
-                        className="block text-sm font-semibold leading-6 text-sky-900"
-                      >
-                        Message
-                      </label>
-                      <div className="mt-2.5">
-                        <textarea
-                          name="message"
-                          id="message"
-                          rows={4}
-                          className="block w-full rounded-md border-0 px-3.5 py-2 text-sky-900 shadow-sm ring-1 ring-inset ring-sky-300 placeholder:text-sky-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
-                          defaultValue={""}
-                          required
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="mt-8 flex justify-end">
-                    <button
-                      type="submit"
-                      className="rounded-md bg-sky-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
-                    >
-                      Send message
-                    </button>
-                  </div>
+                <Icon className="h-9 w-9 text-cyan-400 mb-4" />
+                <span className="text-sm font-medium">{name}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* Projects */}
+        <section id="projects" className="w-full bg-neutral-900 py-24 px-6">
+          <h2 className="text-center text-4xl font-bold text-cyan-400 mb-16">
+            Projects
+          </h2>
+          <div className="mx-auto grid max-w-6xl grid-cols-1 md:grid-cols-2 gap-10">
+            {projects.map((project) => (
+              <a
+                key={project.name}
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col justify-between rounded-xl bg-neutral-800 ring-1 ring-neutral-700 p-8 hover:ring-cyan-500/60 transition-transform hover:-translate-y-1"
+              >
+                <div>
+                  <h3 className="text-2xl font-semibold text-gray-100 group-hover:text-cyan-400 mb-4">
+                    {project.name}
+                  </h3>
+                  <p className="text-gray-400 mb-6">{project.description}</p>
                 </div>
-              </form>
-            </div>
+                <div className="flex flex-wrap gap-4">
+                  {project.technologies.map((tech) => {
+                    const Icon = projectTechnologies[tech];
+                    return <Icon key={tech} className="h-7 w-7 text-cyan-400" />;
+                  })}
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        {/* Contact */}
+        <section id="contact" className="w-full py-24 px-6">
+          <div className="mx-auto max-w-4xl text-center">
+            <h2 className="text-4xl font-bold text-cyan-400 mb-6">Let’s Chat</h2>
+            <p className="text-gray-400 mb-12">
+              Have a project in mind or just want to talk tech, music, or startups? Drop a
+              message and let’s make something epic.
+            </p>
+            <form
+              action="https://formspree.io/f/xpwaawlp"
+              method="POST"
+              className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+            >
+              <input
+                className="col-span-1 sm:col-span-2 rounded-md bg-neutral-900 ring-1 ring-neutral-700 px-4 py-3 text-gray-200 placeholder-gray-500 focus:ring-2 focus:ring-cyan-500"
+                placeholder="Name"
+                type="text"
+                name="name"
+                required
+              />
+              <input
+                className="col-span-1 sm:col-span-2 rounded-md bg-neutral-900 ring-1 ring-neutral-700 px-4 py-3 text-gray-200 placeholder-gray-500 focus:ring-2 focus:ring-cyan-500"
+                placeholder="Email"
+                type="email"
+                name="email"
+                required
+              />
+              <textarea
+                className="col-span-1 sm:col-span-2 rounded-md bg-neutral-900 ring-1 ring-neutral-700 px-4 py-3 text-gray-200 placeholder-gray-500 focus:ring-2 focus:ring-cyan-500"
+                placeholder="Message"
+                name="message"
+                rows={5}
+                required
+              />
+              <button
+                type="submit"
+                className="sm:col-span-2 justify-self-center rounded-lg bg-cyan-500 px-8 py-3 font-semibold text-neutral-950 shadow-lg hover:bg-cyan-400 transition-colors"
+              >
+                Send ✉️
+              </button>
+            </form>
           </div>
         </section>
       </main>

@@ -1,35 +1,38 @@
+/* components/footer.tsx */
 import { FaTwitter, FaGithub, FaLinkedin } from "react-icons/fa";
 
 const socialLinks = [
-  { name: "Twitter", href: "https://x.com/daveybitstech", icon: FaTwitter },
-  { name: "GitHub", href: "https://github.com/djmartin2019", icon: FaGithub },
-  {
-    name: "LinkedIn",
-    href: "https://www.linkedin.com/in/david-martin-uh-bauer2019/",
-    icon: FaLinkedin,
-  },
+  { name: "Twitter / X", href: "https://x.com/daveybitstech", icon: FaTwitter },
+  { name: "GitHub",        href: "https://github.com/djmartin2019", icon: FaGithub },
+  { name: "LinkedIn",      href: "https://www.linkedin.com/in/david-martin-uh-bauer2019/", icon: FaLinkedin },
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-sky-600">
-      <div className="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
-        <div className="mt-10 flex justify-center space-x-10">
-          {socialLinks.map((item) => (
+    <footer className="border-t border-neutral-800 bg-neutral-950">
+      <div className="mx-auto max-w-7xl px-6 py-16 sm:py-20 lg:px-8">
+        {/* social icons */}
+        <div className="flex justify-center space-x-10">
+          {socialLinks.map(({ name, href, icon: Icon }) => (
             <a
-              key={item.name}
-              href={item.href}
-              className="text-white hover:text-gray-300"
+              key={name}
+              href={href}
+              aria-label={name}
+              className="text-gray-400 transition hover:text-cyan-400"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <span className="sr-only">{item.name}</span>
-              <item.icon className="h-6 w-6" aria-hidden="true" />
+              <Icon className="h-6 w-6" />
             </a>
           ))}
         </div>
-        <p className="mt-10 text-center text-xs leading-5 text-gray-200">
-          &copy; 2024 DJM Tech. All rights reserved.
+
+        {/* copyright */}
+        <p className="mt-10 text-center text-xs text-gray-500">
+          © {new Date().getFullYear()} DJM&nbsp;Tech. All rights reserved.
         </p>
       </div>
     </footer>
   );
 }
+
