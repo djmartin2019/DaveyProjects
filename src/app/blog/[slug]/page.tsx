@@ -24,7 +24,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
       <main className="flex-grow">
         <article className="prose prose-invert mx-auto max-w-3xl px-4 py-16">
           <h1 className="mb-0">{post.title}</h1>
-          <p className="mt-0 text-sm text-gray-400">
+          <p className="mt-4 text-sm text-gray-400">
             {new Date(post.date).toLocaleDateString(undefined, {
               year: "numeric",
               month: "long",
