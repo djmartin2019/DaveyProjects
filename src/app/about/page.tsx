@@ -46,13 +46,13 @@ export default function About() {
           </h2>
           <ul className="space-y-2 pl-5 marker:text-cyan-400 list-disc">
             <li>
-              **Empowering users** – tooling that erases friction and sparks joy.
+              <strong>Empowering users</strong> – tooling that erases friction and sparks joy.
             </li>
             <li>
-              **Scalability** – performance today, maintainability tomorrow.
+              <strong>Scalability</strong> – performance today, maintainability tomorrow.
             </li>
             <li>
-              **Tech&nbsp;×&nbsp;Business** – code is only great when it moves
+              <strong>Tech&nbsp;×&nbsp;Business</strong>  – code is only great when it moves
               the needle.
             </li>
           </ul>
