@@ -19,26 +19,23 @@ export default function About() {
             About&nbsp;Me
           </h1>
 
-          {/* Intro */}
-          <p className="mb-5 leading-relaxed">
-            I’m <strong className="text-gray-100">David Martin</strong>—a
-            software developer, entrepreneur, and soon-to-be <em>Vercel&nbsp;insider</em>.
-            My passion sits at the intersection of{" "}
-            <strong className="text-gray-100">
-              elegant DX&nbsp;&&nbsp;scalable architecture
-            </strong>
-            . From fast MVPs to enterprise-grade rebuilds, I ship code that
-            solves real-world pain points and looks good doing it.
-          </p>
+        {/* Intro */}
+        <p className="mb-5 leading-relaxed">
+          I’m <strong className="text-gray-100">David Martin</strong>—a software developer with a shipping problem and a soft spot for clean DX.
+          Most of what I do lives somewhere between{" "}
+          <strong className="text-gray-100">
+            clean DX&nbsp;&&nbsp;don’t-wake-me-up-at-2AM architecture
+          </strong>.
+          Whether it’s an MVP or a full-scale rebuild, I’m here to ship stuff that works—and looks decent while doing it.
+        </p>
 
-          {/* Tech Focus */}
-          <p className="mb-5 leading-relaxed">
-            You’ll usually find me wrangling{" "}
-            <span className="text-gray-100">Next.js&nbsp;14, TypeScript</span>,
-            and serverless infra (Vercel Functions, Edge, Supabase, and friends).
-            I’m an <em>iterate-to-greatness</em> believer—ship, learn, polish,
-            repeat.
-          </p>
+        {/* Tech Focus */}
+        <p className="mb-5 leading-relaxed">
+          These days, I’m usually wrangling{" "}
+          <span className="text-gray-100">Next.js&nbsp;14, TypeScript</span>, and serverless tools like Vercel Functions, Edge, and Supabase.
+          I’m a big believer in <em>iterate-to-greatness</em>: ship fast, learn from the mess, and make it better as you go.
+        </p>
+
 
           {/* What Drives Me */}
           <h2 className="mt-10 mb-4 text-2xl font-semibold text-cyan-400">
@@ -89,14 +86,14 @@ export default function About() {
           {/* CTA */}
           <p className="mt-10 leading-relaxed">
             Got an ambitious idea or just want to geek out about edge caching
-            and chorus pedals?{" "}
+            and chorus pedals?{" "}</p>
+            <br />
             <a
               href="/#contact"
-              className="font-semibold text-cyan-400 hover:underline"
+              className="flex justify-center font-semibold text-cyan-400 hover:underline"
             >
               Let’s&nbsp;talk&nbsp;→
             </a>
-          </p>
         </section>
       </main>
 
