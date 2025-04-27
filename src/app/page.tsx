@@ -1,6 +1,7 @@
 "use client";
 
 import Head from "next/head";
+import Link from "next/link";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { useState } from "react";
@@ -17,6 +18,7 @@ import {
   SiSupabase,
 } from "react-icons/si";
 import { IconType } from "react-icons";
+import { allPosts } from "contentlayer/generated";
 
 // -----------------------------
 // SEO + Structured‑Data helpers
@@ -41,6 +43,13 @@ const jsonLd = {
   ],
   jobTitle: "Software Developer & Entrepreneur",
 };
+
+// -----------------------------
+// Blog Posts
+// -----------------------------
+const latestPosts = allPosts
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .slice(0, 4);
 
 // -----------------------------
 // Types & Sample Data
@@ -209,8 +218,50 @@ export default function Home() {
           </div>
         </section>
 
+    {/* Blog */}
+        <section id="blog" className="w-full py-24 px-6">
+          <h2 className="text-center text-4xl font-bold text-cyan-400 mb-16">
+            Latest&nbsp;Posts
+          </h2>
+
+          {latestPosts.length === 0 ? (
+            <p className="text-center text-gray-500">
+              No posts yet — check back soon!
+            </p>
+          ) : (
+            <div className="mx-auto grid max-w-6xl grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {latestPosts.map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="group flex flex-col rounded-xl bg-neutral-900 ring-1 ring-neutral-700 p-6 hover:ring-cyan-500/60 hover:-translate-y-1 transition"
+                >
+                  <h3 className="text-lg font-semibold text-gray-100 group-hover:text-cyan-400">
+                    {post.title}
+                  </h3>
+
+                  <p className="mt-1 text-xs text-gray-500">
+                    {new Date(post.date).toLocaleDateString(undefined, {
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                    })}
+                  </p>
+
+                  <p className="mt-4 text-sm text-gray-400 line-clamp-3">{post.summary}</p>
+
+                  <span className="mt-auto pt-4 text-xs font-medium text-cyan-400">
+                    Read&nbsp;→
+                  </span>
+                </Link>
+              ))}
+            </div>
+          )}
+        </section>
+
+
         {/* Contact */}
-        <section id="contact" className="w-full py-24 px-6">
+        <section id="contact" className="w-full py-24 px-6 bg-neutral-900">
           <div className="mx-auto max-w-4xl text-center">
             <h2 className="text-4xl font-bold text-cyan-400 mb-6">Let’s Chat</h2>
             <p className="text-gray-400 mb-12">
