@@ -27,8 +27,8 @@ const seo = {
   title: "David Martin | Full‑Stack Developer & Entrepreneur",
   description:
     "Portfolio of David Martin – showcasing modern web, data & music projects built with Next.js, TypeScript, Vercel & Supabase.",
-  url: "https://davidmartin.dev/", // <- set to your canonical domain
-  image: "https://davidmartin.dev/og-image.png", // <- optional social image
+  url: "https://davidmartin.dev/",
+  image: "https://davidmartin.dev/og-image.png",
 }
 
 // JSON‑LD structured data (Person)
@@ -68,6 +68,12 @@ interface Project {
 }
 
 const projects: Project[] = [
+    {
+      name: "DaveyPics",
+      description: "My photography portfolio and blog powered by Next.js and Contentful.",
+      url: "https://www.daveypicsstudio.com/",
+      technologies: ["NextJS", "TailwindCSS", "TypeScript", "Vercel"],
+  },
   {
     name: "Biblical Map App",
     description: "Interactive map for exploring biblical locations with scripture & historical context.",
