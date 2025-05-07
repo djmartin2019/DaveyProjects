@@ -79,6 +79,12 @@ interface Project {
 
 const projects: Project[] = [
   {
+      name: "DaveyPics",
+      description: "My photography portfolio and blog powered by Next.js and Contentful.",
+      url: "https://www.daveypicsstudio.com/",
+      technologies: ["NextJS", "TailwindCSS", "TypeScript", "Vercel"],
+  },
+  {
     name: "Biblical Map App",
     description:
       "Interactive map for exploring biblical locations with scripture & historical context.",
