@@ -9,6 +9,14 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "DJM Tech",
   description: "David Martin's Tech Projects",
+  icons: {
+      icon: '/favicon.ico',
+      apple: '/apple-touch-icon.png',
+      shortcut: '/favicon-16x16.png',
+      other: [
+          { rel: 'manifest', url: '/site.webmanifest' },
+      ],
+  },
 };
 
 interface RootLayoutProps {

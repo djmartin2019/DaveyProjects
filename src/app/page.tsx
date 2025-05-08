@@ -369,7 +369,7 @@ export default function Home() {
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
-                  className="group flex flex-col rounded-xl bg-neutral-900 ring-1 ring-neutral-700 p-6 hover:ring-cyan-500/60 hover:-translate-y-1 transition"
+                  className="group flex flex-col justify-between h-full rounded-xl bg-neutral-900 ring-1 ring-neutral-700 p-6 hover:ring-cyan-500/60 hover:-translate-y-1 transition"
                 >
                   <h3 className="text-lg font-semibold text-gray-100 group-hover:text-cyan-400">{post.title}</h3>
 
