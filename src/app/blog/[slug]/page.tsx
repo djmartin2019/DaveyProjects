@@ -2,7 +2,7 @@ import { allPosts } from "../../../../.contentlayer/generated";
 
 import { notFound } from "next/navigation";
 import { useMDXComponent } from "next-contentlayer/hooks";
-import type { Metatdata } from "next";
+import type { Metadata } from "next";
 
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
