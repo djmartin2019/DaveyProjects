@@ -9,7 +9,7 @@ import Footer from "@/components/footer";
 
 const SITE_URL = "https://www.djm-tech.dev";
 const SITE_NAME = "DJM Tech";
-const FAVICON   = `${SITE_URL}/favicon.ico`
+const FAVICON   = `/favicon.ico`
 const CANONICAL = (slug: string) => `${SITE_URL}/blog/${slug}`
 
 export async function generateMetadata({
