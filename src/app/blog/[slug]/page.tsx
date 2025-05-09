@@ -7,9 +7,10 @@ import type { Metadata } from "next";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 
-const SITE_URL = "https://www.djm-tech.dev/";
+const SITE_URL = "https://www.djm-tech.dev";
 const SITE_NAME = "DJM Tech";
-const FAVICON = "/favicon.ico";
+const FAVICON   = `${SITE_URL}/favicon.ico`
+const CANONICAL = (slug: string) => `${SITE_URL}/blog/${slug}`
 
 export async function generateMetadata({
     params,
@@ -28,7 +29,9 @@ export async function generateMetadata({
             description: post.summary,
             url,
             siteName: SITE_NAME,
-            images: [{ url: FAVICON, alt: SITE_NAME }],
+            images: [
+                { url: FAVICON, alt: SITE_NAME, width: 48, height: 48 },
+            ],
             type: "article",
         },
         twitter: {
@@ -39,6 +42,9 @@ export async function generateMetadata({
         },
         icons: {
             icon: FAVICON,
+        },
+        alternates: {
+            canonical: url,
         },
     };
 }
