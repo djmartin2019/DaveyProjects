@@ -91,6 +91,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
         <meta name="twitter:title"       content={post.title} />
         <meta name="twitter:description" content={post.summary} />
         <meta name="twitter:image"       content={OG_IMAGE} />
+        <meta name="twitter:image:alt"   content="DJM Tech" />
       </Head>
     <div className="min-h-screen flex flex-col bg-neutral-950 text-gray-300 selection:bg-cyan-400/30">
       <Navbar />
