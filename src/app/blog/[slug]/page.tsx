@@ -2,9 +2,46 @@ import { allPosts } from "../../../../.contentlayer/generated";
 
 import { notFound } from "next/navigation";
 import { useMDXComponent } from "next-contentlayer/hooks";
+import type { Metatdata } from "next";
 
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+
+const SITE_URL = "https://www.djm-tech.dev/";
+const SITE_NAME = "DJM Tech";
+const FAVICON = "/favicon.ico";
+
+export async function generateMetadata({
+    params,
+}: {
+    params: { slug: string },
+}): Promise<Metadata> {
+    const post = allPosts.find((p) => p.slug === params.slug);
+    if (!post) return {};
+
+    const url = `${SITE_URL}/blog/${post.slug}`;
+    return {
+        title: post.title,
+        description: post.summary,
+        openGraph: {
+            title: post.title,
+            description: post.summary,
+            url,
+            siteName: SITE_NAME,
+            images: [{ url: FAVICON, alt: SITE_NAME }],
+            type: "article",
+        },
+        twitter: {
+            card: "summary",
+            title: post.title,
+            description: post.summary,
+            images: [FAVICON],
+        },
+        icons: {
+            icon: FAVICON,
+        },
+    };
+}
 
 export function generateStaticParams() {
   return allPosts.map(p => ({ slug: p.slug }));
