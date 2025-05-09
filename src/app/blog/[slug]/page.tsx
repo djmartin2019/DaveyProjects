@@ -1,5 +1,5 @@
+import Head from "next/head";
 import { allPosts } from "../../../../.contentlayer/generated";
-
 import { notFound } from "next/navigation";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import type { Metadata } from "next";
@@ -22,6 +22,7 @@ export async function generateMetadata({
     if (!post) return {};
 
   const canonical = `${SITE_URL}/blog/${post.slug}`;
+
   return {
     title: post.title,
     description: post.summary,
@@ -63,10 +64,34 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
   const post = allPosts.find(p => p.slug === params.slug);
   if (!post) notFound();
 
+  const url = `${SITE_URL}/blog/${post.slug}`;
+
   // turn the MDX code string into a React component
   const MDXContent = useMDXComponent(post.body.code);
 
   return (
+      <>
+      <Head>
+        {/* Standard SEO */}
+        <title>{post.title}</title>
+        <meta name="description"       content={post.summary} />
+        <link rel="canonical"           href={url} />
+
+        {/* Open Graph */}
+        <meta property="og:type"        content="article" />
+        <meta property="og:title"       content={post.title} />
+        <meta property="og:description" content={post.summary} />
+        <meta property="og:url"         content={url} />
+        <meta property="og:image"       content={OG_IMAGE} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height"content="630" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card"        content="summary_large_image" />
+        <meta name="twitter:title"       content={post.title} />
+        <meta name="twitter:description" content={post.summary} />
+        <meta name="twitter:image"       content={OG_IMAGE} />
+      </Head>
     <div className="min-h-screen flex flex-col bg-neutral-950 text-gray-300 selection:bg-cyan-400/30">
       <Navbar />
 
@@ -88,5 +113,6 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
 
       <Footer />
     </div>
+    </>
   );
 }
