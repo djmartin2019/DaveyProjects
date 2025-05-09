@@ -9,8 +9,9 @@ import Footer from "@/components/footer";
 
 const SITE_URL = "https://www.djm-tech.dev";
 const SITE_NAME = "DJM Tech";
-const FAVICON   = `/favicon.ico`
-const CANONICAL = (slug: string) => `${SITE_URL}/blog/${slug}`
+const FAVICON   = `${SITE_URL}/favicon.ico`;
+const CANONICAL = (slug: string) => `${SITE_URL}/blog/${slug}`;
+const OG_IMAGE = `${SITE_URL}/og-default.png`;
 
 export async function generateMetadata({
     params,
@@ -20,33 +21,38 @@ export async function generateMetadata({
     const post = allPosts.find((p) => p.slug === params.slug);
     if (!post) return {};
 
-    const url = `${SITE_URL}/blog/${post.slug}`;
-    return {
-        title: post.title,
-        description: post.summary,
-        openGraph: {
-            title: post.title,
-            description: post.summary,
-            url,
-            siteName: SITE_NAME,
-            images: [
-                { url: FAVICON, alt: SITE_NAME, width: 48, height: 48 },
-            ],
-            type: "article",
-        },
-        twitter: {
-            card: "summary_large_image",
-            title: post.title,
-            description: post.summary,
-            images: [FAVICON],
-        },
-        icons: {
-            icon: FAVICON,
-        },
-        alternates: {
-            canonical: url,
-        },
-    };
+  const canonical = `${SITE_URL}/blog/${post.slug}`;
+  return {
+    title: post.title,
+    description: post.summary,
+    openGraph: {
+      title:       post.title,
+      description: post.summary,
+      url:         canonical,
+      siteName:    SITE_NAME,
+      images: [
+        {
+          url:    OG_IMAGE,
+          alt:    SITE_NAME,
+          width:  1200,
+          height: 630
+        }
+      ],
+      type: "article",
+    },
+    twitter: {
+      card:        "summary_large_image",
+      title:       post.title,
+      description: post.summary,
+      images:      [OG_IMAGE],
+    },
+    icons: {
+      icon: FAVICON,
+    },
+    alternates: {
+      canonical,
+    },
+  };
 }
 
 export function generateStaticParams() {
