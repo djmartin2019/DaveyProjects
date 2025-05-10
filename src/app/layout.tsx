@@ -40,8 +40,6 @@ export const metadata: Metadata = {
     follow: true,
     nocache: false,
   },
-  themeColor: "#ffffff",
-  colorScheme: "light dark",
   icons: {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
@@ -50,7 +48,10 @@ export const metadata: Metadata = {
   },
 };
 
-
+export const viewport = {
+  themeColor: "#ffffff",
+  colorScheme: "light dark",
+};
 
 interface RootLayoutProps {
   children: React.ReactNode;

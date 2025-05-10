@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { useState, useEffect } from "react"
 import {
   SiJavascript,
@@ -105,7 +106,8 @@ const skills = [
   { name: "TypeScript", icon: SiTypescript },
 ]
 
-const introduction = `Hi, I'm David — an entrepreneur & developer obsessed with shipping delightful, scalable experiences. I wield Next.js + TypeScript on Vercel to turn ideas into reality — fast.`
+const introduction = `Hi, I'm David — a developer driven by curiosity, always exploring how to build better, faster, and smarter with Next.js, TypeScript, and Vercel.`;
+
 
 // -----------------------------
 // Component
@@ -164,60 +166,80 @@ export default function Home() {
           </div>
 
           {/* Content container */}
-          <div className="relative z-10 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
-            {/* Text content */}
-            <div className="flex flex-col space-y-6">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-cyan-500/20 border border-cyan-500/30 backdrop-blur-sm w-fit"
-              >
-                <span className="relative flex h-3 w-3">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-cyan-500"></span>
-                </span>
-                <span className="text-sm font-medium text-cyan-400">Available for new projects</span>
-              </motion.div>
+            <div className="relative z-10 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
 
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-5xl md:text-6xl font-extrabold tracking-tight text-cyan-400 drop-shadow-[0_0_8px_theme('colors.cyan.400')] leading-tight"
-              >
-                Building Future‑Proof Web Experiences
-              </motion.h1>
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="text-base md:text-xl leading-relaxed text-gray-300"
-              >
-                {introduction}
-              </motion.p>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="flex flex-wrap gap-4 pt-4 md:pt-6"
-              >
-                <Link
-                  href="#contact"
-                  className="inline-flex h-12 items-center justify-center rounded-lg bg-cyan-500/90 px-6 py-3 text-base md:text-lg font-semibold text-neutral-950 shadow-lg hover:bg-cyan-400 transition-colors"
+              {/* Text content */}
+              <div className="flex flex-col space-y-6">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-cyan-500/20 border border-cyan-500/30 backdrop-blur-sm w-fit"
                 >
-                  Let's Connect
-                </Link>
-                <Link
-                  href="#projects"
-                  className="inline-flex h-12 items-center justify-center rounded-lg bg-transparent border border-cyan-500/50 px-6 py-3 text-base md:text-lg font-semibold text-cyan-400 hover:bg-cyan-500/10 transition-colors"
+                  <span className="relative flex h-3 w-3">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-cyan-500"></span>
+                  </span>
+                  <span className="text-sm font-medium text-cyan-400">Exploring new ideas</span>
+                </motion.div>
+
+                <motion.h1
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  className="text-5xl md:text-6xl font-extrabold tracking-tight text-cyan-400 drop-shadow-[0_0_8px_theme('colors.cyan.600')] leading-tight"
                 >
-                  View Projects
-                </Link>
-              </motion.div>
-            </div>
+                  Building Future‑Proof Web Experiences
+                </motion.h1>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="text-base md:text-xl leading-relaxed text-gray-300"
+                >
+                  {introduction}
+                </motion.p>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  className="flex flex-wrap gap-4 pt-4 md:pt-6"
+                >
+                  <Link
+                    href="#contact"
+                    className="inline-flex h-12 items-center justify-center rounded-lg bg-cyan-500/90 px-6 py-3 text-base md:text-lg font-semibold text-neutral-950 shadow-lg hover:bg-cyan-400 transition-colors"
+                  >
+                    Let's Connect
+                  </Link>
+                  <Link
+                    href="#projects"
+                    className="inline-flex h-12 items-center justify-center rounded-lg bg-transparent border border-cyan-500/50 px-6 py-3 text-base md:text-lg font-semibold text-cyan-400 hover:bg-cyan-500/10 transition-colors"
+                  >
+                    View Projects
+                  </Link>
+                </motion.div>
+              </div>
+
+              {/* Desktop-only image */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  className="hidden lg:block"
+                >
+                  <Image
+                    src="/djm-image.png"
+                    alt="DJM logo"
+                    width={448}
+                    height={448}
+                    className="w-full max-w-md mx-auto"
+                    priority
+                  />
+                </motion.div>
+
+
 
             {/* Visual element */}
             <motion.div
